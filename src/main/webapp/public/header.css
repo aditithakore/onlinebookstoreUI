@@ -1,0 +1,88 @@
+@charset "ISO-8859-1";
+.navbar {
+    background-color: var(--secondary-color); /* Set the background color */
+    /* color: #595959; */ /* Set the text color */
+    padding: 10px 20px; /* Add padding */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand {
+    font-size: 24px; /* Adjust the font size */
+    font-weight: bold; /* Make it bold */
+    text-decoration: none; /* Remove underline */
+    color: white; /* Set the text color */
+}
+
+.menu-inner {
+    display: flex;
+    list-style-type: none;
+}
+
+.menu-item {
+    margin-right: 20px;
+}
+
+.menu-link {
+    text-decoration: none;
+    color: white;
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+}
+
+.search-input {
+	width: 800px; 
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+}
+
+.search-submit {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: var(--primary-color); ; /* Use the accent color for button background */
+    color: white; /* Set text color */
+    margin-left: 10px; /* Add some space between input and button */
+}
+
+.burger {
+    display: none; /* Hide hamburger menu by default */
+}
+.menu-inner {
+    display: flex;
+    list-style-type: none;
+}
+
+.menu-inner.show-menu {
+    display: flex; 
+}
+@media(max-width: 900px) {
+    /* Adjustments for smaller screens */
+    .menu-inner {
+        display: none; /* Hide menu items */
+    }
+
+    .search {
+        margin-right: 20px; /* Add margin to separate search from hamburger */
+    }
+
+    .burger {
+        display: flex; /* Show hamburger menu */
+        flex-direction: column; /* Arrange lines vertically */
+        justify-content: space-around; /* Space lines evenly */
+        width: 30px; /* Set width */
+        height: 25px; /* Set height */
+        cursor: pointer; /* Change cursor to pointer */
+    }
+
+    .burger-line {
+        width: 100%;
+        height: 3px;
+        background-color: white;
+    }
+}

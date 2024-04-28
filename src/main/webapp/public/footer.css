@@ -1,0 +1,50 @@
+/* Global styles */
+
+a {
+    color: #808F85;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #595959;
+}
+
+
+.mini-footer {
+    background: #808F85;
+    text-align: center;
+    padding: 32px 0;
+}
+
+.mini-footer p {
+    margin: 0;
+    line-height: 26px;
+    font-size: 15px;
+    color: #595959;
+}
+
+.mini-footer p a {
+    color: #595959;
+    font-weight: 500;
+}
+
+.mini-footer p a:hover {
+    color: #91C499;
+}
+
+/* Specific styles for footer widgets */
+.widget-about p {
+    color: #595959;
+}
+
+.widget-about .contact-details li i {
+    color: #595959;
+}
+
+.footer-menu ul li a {
+    color: #808F85;
+}
+
+.footer-menu ul li a:hover {
+    color: #91C499;
+}

@@ -1,32 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!-- <!DOCTYPE html>
-<html>
-<head>
-    <title>Signup Page</title>
-	<script src="public/scripts.js"></script>
-	<link rel="stylesheet"  href="public/styles.css">
-</head> 
-<body>
-    <h2>Signup</h2>
-    <form action="signup_process.jsp" method="post">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required><br><br>
-
-        <label for="email">Email address:</label>
-        <input type="email" id="email" name="email" required><br><br>
-
-
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required><br><br>
-
-
-        <input type="submit" value="Signup">
-    </form>
-</body>
-</html>
-
- -->
  
  <!DOCTYPE html>
 <html lang="en">
@@ -74,15 +47,17 @@
 					<h2 class="title">Sign up</h2>
 					<div class="input-field">
 						<i class="fas fa-user"></i>
-						<input type="text" placeholder="Username" />
+						<input type="text" placeholder="Username" id="name" name="name"/>
+						
+						
 					</div>
 					<div class="input-field">
 						<i class="fas fa-envelope"></i>
-						<input type="email" placeholder="Email" />
+						<input type="email" placeholder="Email" id="email" name="email"/>
 					</div>
 					<div class="input-field">
 						<i class="fas fa-lock"></i>
-						<input type="password" placeholder="Password" />
+						<input type="password" placeholder="Password"  id="password" name="password"/>
 					</div>
 					<input type="submit" class="btn" value="Sign up" />
 					<p class="social-text">Or Sign up with social platforms</p>
