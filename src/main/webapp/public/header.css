@@ -1,7 +1,7 @@
 @charset "ISO-8859-1";
 .navbar {
-    background-color: var(--secondary-color); /* Set the background color */
-    /* color: #595959; */ /* Set the text color */
+    background-color: #808F85; /* Set the background color */
+     color: #595959;  /* Set the text color */
     padding: 10px 20px; /* Add padding */
     display: flex;
     justify-content: space-between;
