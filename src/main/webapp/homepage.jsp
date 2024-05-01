@@ -1,5 +1,49 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@page import="com.google.gson.Gson"%>
+<%@ page language="java" import="java.net.HttpURLConnection, java.net.URL, java.io.BufferedReader, java.io.InputStreamReader" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+ <%!
+ String responseData;
+ 	public void jspInit(){
+	 try{
+		 String apiUrl = "http://localhost:8080/books";
+		    URL url = new URL(apiUrl);
+		    HttpURLConnection con = (HttpURLConnection) url.openConnection();
+		    con.setRequestMethod("GET");
+
+		    int status = con.getResponseCode();
+		    if (status == 200) { // OK
+		        BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+		        String inputLine;
+		        StringBuffer content = new StringBuffer();
+		        while ((inputLine = in.readLine()) != null) {
+		            content.append(inputLine);
+		        }
+		        in.close();
+		        // Process the API response data
+		        responseData = content.toString();
+		        String jsonString = "[{\"id\":1,\"title\":\"Harry Potter Series\",\"author\":{\"id\":1,\"name\":\"J.K. Rowling\",\"biography\":\"Joanne Rowling, better known by her pen name J.K. Rowling, is a British author, philanthropist, film producer, and TV writer.\"},\"isbn\":\"9780545162074\",\"isTrending\":true,\"onHero\":false,\"publisher\":{\"id\":1,\"name\":\"Scholastic Inc.\",\"location\":\"Mumbai\"},\"category\":{\"id\":1,\"name\":\"Fantasy\"},\"description\":\"A series of fantasy novels written by J.K. Rowling.\",\"price\":29.99,\"stock\":100,\"publicationDate\":\"1997-06-26\",\"coverImage\":\"hp_cover.jpg\",\"dealOfTheDay\":true},{\"id\":2,\"title\":\"1984\",\"author\":{\"id\":2,\"name\":\"George Orwell\",\"biography\":\"Eric Arthur Blair, known by his pen name George Orwell, was an English novelist, essayist, journalist, and critic.\"},\"isbn\":\"9780451524935\",\"isTrending\":false,\"onHero\":true,\"publisher\":{\"id\":2,\"name\":\"Penguin Books\",\"location\":\"Delhi\"},\"category\":{\"id\":2,\"name\":\"Dystopian\"},\"description\":\"A dystopian social science fiction novel by George Orwell.\",\"price\":19.99,\"stock\":50,\"publicationDate\":\"1949-06-08\",\"coverImage\":\"1984_cover.jpg\",\"dealOfTheDay\":true}]";
+
+		        // Convert JSON string to array of Book objects
+		        Gson gson = new Gson();
+		        Book[] books = gson.fromJson(jsonString, Book[].class);
+
+		        // Now you can work with the array of Book objects
+		        for (Book book : books) {
+		            System.out.println(book.getTitle());
+		            System.out.println(book.getAuthor().getName());
+		            // Print other properties as needed
+		        }
+		    } else {
+		        // Handle API error
+		        
+		    }
+	 }
+	 catch(Exception e){
+		 responseData = e.toString();
+	 }
+ }
+ %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,6 +70,7 @@
 <div class="hero">
     <div class="text">
         <h1>Book title</h1>
+        <%= responseData %>
         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
     </div>
     <div class="image">
@@ -111,6 +156,6 @@
 
 </div>
 <jsp:include page="footer.jsp" /> 
-<script src="public/scripts.js"></script>
+<script src="public/homepage.js"></script>
 </body>
 </html>
