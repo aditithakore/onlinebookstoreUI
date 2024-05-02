@@ -1,4 +1,16 @@
 @charset "ISO-8859-1";
+:root {
+  --primary-color: #595959;
+  --secondary-color: #808F85;
+  --accent-color: #91C499;
+  --background-color: #F2E9DC;
+  --text-color: #CFD11A;
+}
+
+body{
+	background-color: var(--background-color);
+}
+
 .mainsection {
     width: 100%;
     height: 100%;

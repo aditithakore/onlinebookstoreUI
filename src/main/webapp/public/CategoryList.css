@@ -1,8 +1,30 @@
 @charset "ISO-8859-1";
+:root {
+  --primary-color: #595959;
+  --secondary-color: #808F85;
+  --accent-color: #91C499;
+  --background-color: #F2E9DC;
+  --text-color: #CFD11A;
+}
+
+body {
+	background-color: var(--background-color);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.with-footer{
+	display: flex;
+	flex-direction: column;
+}
+
 .category-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  flex-grow: 1; /* Allow the category container to take up remaining space */
 }
 
 .category-column {

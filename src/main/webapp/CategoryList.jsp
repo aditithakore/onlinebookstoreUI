@@ -46,7 +46,7 @@ public void jspInit(){
 	 }
 }
 %>
-
+<div class=with-footer>
 <div class="category-container">
   <%
   int columnCount = 0;
@@ -59,8 +59,9 @@ public void jspInit(){
   <%
       }
   %>
-  <a href="./ListingBook.jsp?id=<%=c.getId()%>&type=<%= c.getName()%>">
+  
       <div class="category-column">
+      <a href="./ListingBook.jsp?id=<%=c.getId()%>&type=<%= c.getName()%>" >
   <%
       columnCount++;
   colorClass = (colorCount++ % 2 == 0) ? "colored" : "";
@@ -72,7 +73,11 @@ public void jspInit(){
     categoryCount++;
    }
   %>
-  </div>
   </a>
+  </div>
+  
+
+<jsp:include page="footer.jsp"></jsp:include>
+</div>
 </body>
 </html>
