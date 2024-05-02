@@ -22,5 +22,8 @@ xhr.onreadystatechange = function () {
   } 
 };
 
+
+
+
 // Send the request
 xhr.send();

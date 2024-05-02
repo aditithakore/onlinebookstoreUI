@@ -16,10 +16,10 @@
  List<Books> booksDeal = new ArrayList<>();
  	public void jspInit(){
 	 try{
-		 String heroBook = ApiFetch.fetchDataFromAPI("http://localhost:8080/books/onHero");	
-		 String trendingBook = ApiFetch.fetchDataFromAPI("http://localhost:8080/books/isTrending");	
-		 String categroy = ApiFetch.fetchDataFromAPI("http://localhost:8080/category");	
-		 String dealBook = ApiFetch.fetchDataFromAPI("http://localhost:8080/books/dealOfTheDay");	
+		 String heroBook = ApiFetch.fetchDataFromAPI("http://localhost:8082/books/onHero");	
+		 String trendingBook = ApiFetch.fetchDataFromAPI("http://localhost:8082/books/isTrending");	
+		 String categroy = ApiFetch.fetchDataFromAPI("http://localhost:8082/categories");	
+		 String dealBook = ApiFetch.fetchDataFromAPI("http://localhost:8082/books/dealOfTheDay");	
 		 if(heroBook != null){
 			 JSONArray array = new JSONArray(heroBook);
 			 
@@ -89,13 +89,43 @@
 
 <div class="category text">
 
-<jsp:include page="category.jsp" /> 
+<h1 >Shop by category</h1>
+<div class="category-list">
+    <%
+    String[] categories = {"Category 1", "Category 2", "Category 3", "Category 4"};
+    String[] categoryImages = {"https://dummyimage.com/200x200/000/fff", "https://dummyimage.com/200x200/000/fff", "https://dummyimage.com/200x200/000/fff", "https://dummyimage.com/200x200/000/fff"}; 
+    for (int i = 0; i < 4; i++) {
+    %>
+    <div class="category-item">
+        <div class="category-circle" style="background-image: url('<%=categoryImages[i]%>');">
+            <div class="category-overlay"><p><%=category.get(i).getName()%><p></div>
+        </div>
+    </div>
+    <% } %>
+</div>
+<div class="view-more">
+<p style="font-style:italic; font-size:20px"><a href="./CategoryList.jsp">View more&nbsp;></a><p>
+</div>
+
 </div>
 
 <div class="trending text">
-<jsp:include page="trending.jsp" >
-<jsp:param value="booksTrending" name="trending"/>
-</jsp:include> 
+<h1>Trending Books</h1>
+<%  %>
+<div class="category-list">
+    <%
+    String[] books = {"book 1", "book 2", "book 3", "book 4"};
+    String[] booksImages = {"https://dummyimage.com/250x380/000/fff", "https://dummyimage.com/250x380/000/fff", "https://dummyimage.com/250x380/000/fff", "https://dummyimage.com/250x380/000/fff"}; 
+    for (int i = 0; i < 4; i++) {
+    %>
+    <div class="category-item">
+        <div class="category-rectangle" style="background-image: url('<%=booksImages[i]%>');">
+            <div class="category-overlay text"><p><%=booksTrending.get(i).getTitle()%></p></div>
+        </div>
+    </div>
+    <% } %>
+</div>
+<%-- <jsp:param value="booksTrending" name="trending"/> --%>
 </div>
 <div class="deal text">
 <h1>Deal of the day</h1>
@@ -166,6 +196,8 @@
 
 </div>
 <jsp:include page="footer.jsp" /> 
-<script src="public/homepage.js"></script>
+<script src="public/homepage.js" >
+
+</script>
 </body>
 </html>

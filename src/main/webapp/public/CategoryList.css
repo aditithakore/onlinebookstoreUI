@@ -1,0 +1,23 @@
+@charset "ISO-8859-1";
+.category-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.category-column {
+  margin: 10px;
+  text-align: center;
+}
+
+.category-column div {
+  margin-bottom: 10px;
+  padding: 5px;
+  background-color: #f2f2f2;
+  border-radius: 4px;
+  font-size: 18px; /* Increase font size */
+}
+
+.category-column div.colored {
+  color: white; /* Set text color for colored categories */
+}
