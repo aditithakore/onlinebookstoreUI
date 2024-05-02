@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" import="org.apache.jasper.tagplugins.jstl.core.*" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+ 
 <!-- <!DOCTYPE html>
 <html>
 <head>
@@ -12,6 +13,7 @@
 </html> -->
 
 <h1>Trending Books</h1>
+<%  %>
 <div class="category-list">
     <%
     String[] books = {"book 1", "book 2", "book 3", "book 4"};

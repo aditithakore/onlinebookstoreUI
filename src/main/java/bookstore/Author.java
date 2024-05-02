@@ -1,3 +1,9 @@
+package bookstore;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+
 public class Author {
     private int id;
     private String name;
@@ -34,5 +40,22 @@ public class Author {
 
     public void setBiography(String biography) {
         this.biography = biography;
+    }
+    
+    public static Author fromJSON(JSONObject jsonObject) throws JSONException {
+        int id = jsonObject.getInt("id");
+        String name = jsonObject.getString("name");
+        String biography = jsonObject.getString("biography");
+
+        return new Author(id, name, biography);
+    }
+    
+    public JSONObject toJSON() throws JSONException {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("id", id);
+        jsonObject.put("name", name);
+        jsonObject.put("biography", biography);
+
+        return jsonObject;
     }
 }

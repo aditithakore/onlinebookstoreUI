@@ -1,4 +1,9 @@
-public class Book {
+package bookstore;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+public class Books {
     private int id;
     private String title;
     private Author author;
@@ -16,7 +21,7 @@ public class Book {
 
     // Constructor, getters, and setters
     // Constructor
-    public Book(int id, String title, Author author, String isbn, boolean isTrending, boolean onHero, Publisher publisher, Category category, String description, double price, int stock, String publicationDate, String coverImage, boolean dealOfTheDay) {
+    public Books(int id, String title, Author author, String isbn, boolean isTrending, boolean onHero, Publisher publisher, Category category, String description, double price, int stock, String publicationDate, String coverImage, boolean dealOfTheDay) {
         this.id = id;
         this.title = title;
         this.author = author;
@@ -144,5 +149,42 @@ public class Book {
 
     public void setDealOfTheDay(boolean dealOfTheDay) {
         this.dealOfTheDay = dealOfTheDay;
+    }
+    public static Books fromJSON(JSONObject jsonObject) throws JSONException {
+        int id = jsonObject.getInt("id");
+        String title = jsonObject.getString("title");
+        Author author = Author.fromJSON(jsonObject.getJSONObject("author"));
+        String isbn = jsonObject.getString("isbn");
+        boolean isTrending = jsonObject.getBoolean("isTrending");
+        boolean onHero = jsonObject.getBoolean("onHero");
+        Publisher publisher = Publisher.fromJSON(jsonObject.getJSONObject("publisher"));
+        Category category = Category.fromJSON(jsonObject.getJSONObject("category"));
+        String description = jsonObject.getString("description");
+        double price = jsonObject.getDouble("price");
+        int stock = jsonObject.getInt("stock");
+        String publicationDate = jsonObject.getString("publicationDate");
+        String coverImage = jsonObject.getString("coverImage");
+        boolean dealOfTheDay = jsonObject.getBoolean("dealOfTheDay");
+
+        return new Books(id, title, author, isbn, isTrending, onHero, publisher, category, description, price, stock, publicationDate, coverImage, dealOfTheDay);
+    }
+    public JSONObject toJSON() throws JSONException {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("id", id);
+        jsonObject.put("title", title);
+        jsonObject.put("author", author.toJSON());
+        jsonObject.put("isbn", isbn);
+        jsonObject.put("isTrending", isTrending);
+        jsonObject.put("onHero", onHero);
+        jsonObject.put("publisher", publisher.toJSON());
+        jsonObject.put("category", category.toJSON());
+        jsonObject.put("description", description);
+        jsonObject.put("price", price);
+        jsonObject.put("stock", stock);
+        jsonObject.put("publicationDate", publicationDate);
+        jsonObject.put("coverImage", coverImage);
+        jsonObject.put("dealOfTheDay", dealOfTheDay);
+
+        return jsonObject;
     }
 }

@@ -1,43 +1,53 @@
-<%@page import="com.google.gson.Gson"%>
+<%@page import="bookstore.Category"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="org.json.JSONObject"%>
+<%@page import="org.json.JSONArray"%>
+<%@page import="java.util.List"%>
+<%@page import="bookstore.Books"%>
+<%@page import="bookstore.ApiFetch"%>
 <%@ page language="java" import="java.net.HttpURLConnection, java.net.URL, java.io.BufferedReader, java.io.InputStreamReader" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
  <%!
  String responseData;
+ List<Books> booksHero = new ArrayList<>();
+ List<Books> booksTrending = new ArrayList<>();
+ List<Category> category = new ArrayList<>();
+ List<Books> booksDeal = new ArrayList<>();
  	public void jspInit(){
 	 try{
-		 String apiUrl = "http://localhost:8080/books";
-		    URL url = new URL(apiUrl);
-		    HttpURLConnection con = (HttpURLConnection) url.openConnection();
-		    con.setRequestMethod("GET");
-
-		    int status = con.getResponseCode();
-		    if (status == 200) { // OK
-		        BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-		        String inputLine;
-		        StringBuffer content = new StringBuffer();
-		        while ((inputLine = in.readLine()) != null) {
-		            content.append(inputLine);
-		        }
-		        in.close();
-		        // Process the API response data
-		        responseData = content.toString();
-		        String jsonString = "[{\"id\":1,\"title\":\"Harry Potter Series\",\"author\":{\"id\":1,\"name\":\"J.K. Rowling\",\"biography\":\"Joanne Rowling, better known by her pen name J.K. Rowling, is a British author, philanthropist, film producer, and TV writer.\"},\"isbn\":\"9780545162074\",\"isTrending\":true,\"onHero\":false,\"publisher\":{\"id\":1,\"name\":\"Scholastic Inc.\",\"location\":\"Mumbai\"},\"category\":{\"id\":1,\"name\":\"Fantasy\"},\"description\":\"A series of fantasy novels written by J.K. Rowling.\",\"price\":29.99,\"stock\":100,\"publicationDate\":\"1997-06-26\",\"coverImage\":\"hp_cover.jpg\",\"dealOfTheDay\":true},{\"id\":2,\"title\":\"1984\",\"author\":{\"id\":2,\"name\":\"George Orwell\",\"biography\":\"Eric Arthur Blair, known by his pen name George Orwell, was an English novelist, essayist, journalist, and critic.\"},\"isbn\":\"9780451524935\",\"isTrending\":false,\"onHero\":true,\"publisher\":{\"id\":2,\"name\":\"Penguin Books\",\"location\":\"Delhi\"},\"category\":{\"id\":2,\"name\":\"Dystopian\"},\"description\":\"A dystopian social science fiction novel by George Orwell.\",\"price\":19.99,\"stock\":50,\"publicationDate\":\"1949-06-08\",\"coverImage\":\"1984_cover.jpg\",\"dealOfTheDay\":true}]";
-
-		        // Convert JSON string to array of Book objects
-		        Gson gson = new Gson();
-		        Book[] books = gson.fromJson(jsonString, Book[].class);
-
-		        // Now you can work with the array of Book objects
-		        for (Book book : books) {
-		            System.out.println(book.getTitle());
-		            System.out.println(book.getAuthor().getName());
-		            // Print other properties as needed
-		        }
-		    } else {
-		        // Handle API error
-		        
-		    }
+		 String heroBook = ApiFetch.fetchDataFromAPI("http://localhost:8080/books/onHero");	
+		 String trendingBook = ApiFetch.fetchDataFromAPI("http://localhost:8080/books/isTrending");	
+		 String categroy = ApiFetch.fetchDataFromAPI("http://localhost:8080/category");	
+		 String dealBook = ApiFetch.fetchDataFromAPI("http://localhost:8080/books/dealOfTheDay");	
+		 if(heroBook != null){
+			 JSONArray array = new JSONArray(heroBook);
+			 
+			 for(int i = 0; i < array.length(); i++){				 
+			 	booksHero.add(Books.fromJSON(array.getJSONObject(i)));
+			 }
+		 }
+		 if(trendingBook != null){
+			 JSONArray array = new JSONArray(trendingBook);
+			 
+			 for(int i = 0; i < array.length(); i++){				 
+				 booksTrending.add(Books.fromJSON(array.getJSONObject(i)));
+			 }
+		 }
+		 if(categroy != null){
+			 JSONArray array = new JSONArray(categroy);
+			 
+			 for(int i = 0; i < array.length(); i++){				 
+				 category.add(Category.fromJSON(array.getJSONObject(i)));
+			 }
+		 }
+		 if(dealBook != null){
+			 JSONArray array = new JSONArray(dealBook);
+			 
+			 for(int i = 0; i < array.length(); i++){				 
+				 booksDeal.add(Books.fromJSON(array.getJSONObject(i)));
+			 }
+		 }
 	 }
 	 catch(Exception e){
 		 responseData = e.toString();
@@ -69,9 +79,8 @@
 <jsp:include page="header.jsp" /> 
 <div class="hero">
     <div class="text">
-        <h1>Book title</h1>
-        <%= responseData %>
-        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+        <h1><%= booksHero.get(0).getTitle() %></h1>
+        <p><%= booksHero.get(0).getDescription() %></p>
     </div>
     <div class="image">
         <img src="https://dummyimage.com/300x400/000/fff" alt="Book cover">
@@ -84,7 +93,9 @@
 </div>
 
 <div class="trending text">
-<jsp:include page="trending.jsp" /> 
+<jsp:include page="trending.jsp" >
+<jsp:param value="booksTrending" name="trending"/>
+</jsp:include> 
 </div>
 <div class="deal text">
 <h1>Deal of the day</h1>
@@ -94,11 +105,11 @@
                 <img src="https://images-na.ssl-images-amazon.com/images/I/718ReYbwlFL.jpg" alt="" class="book-img">
             </div>
             <div class="descp">
-                <h2 class="book-name">After You</h2>
-                <h3 class="author">by Jojo Myoes</h3>
-                <h3 class="rating">1.987 rating</h3>
+                <h2 class="book-name"><%= booksDeal.get(0).getTitle() %></h2>
+                <h3 class="author">by <%= booksDeal.get(0).getAuthor().getName() %></h3>
+                <h3 class="rating"><%= booksDeal.get(0).getStock() %> left</h3>
                 <p class="info">
-                    It continues the story of Louisa Clark after Will's death. She is trying to move on. 
+                    <%= booksDeal.get(0).getDescription() %>
                 </p>
                 <button type="submit">See the Book</button>
             </div>
@@ -109,14 +120,13 @@
                 <img src="https://images-na.ssl-images-amazon.com/images/I/91JxVjINNsL.jpg" alt="" class="book-img">
             </div>
             <div class="descp">
-                <h2 class="book-name">Big Magic</h2>
-                <h3 class="author">by Elizabeth Gilbert</h3>
-                <h3 class="rating">1.987 rating</h3>
+                <h2 class="book-name"><%= booksDeal.get(1).getTitle() %></h2>
+                <h3 class="author">by <%= booksDeal.get(1).getAuthor().getName() %></h3>
+                <h3 class="rating"><%= booksDeal.get(1).getStock() %> left</h3>
                 <p class="info">
-                    Readers of all ages and walks of life have drawn inspiration from Elizabeth
-                    Gilbert’s books.
+                    <%= booksDeal.get(1).getDescription() %>
                 </p>
-                <button type="submit" id="b1">See the Book</button>
+                <button type="submit">See the Book</button>
             </div>
         </div>
 
