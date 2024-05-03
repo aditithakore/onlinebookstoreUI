@@ -11,7 +11,7 @@
 <body>
 <header class="header" id="header">
    <nav class="navbar container">
-      <a href="#" class="brand">Brand</a>
+      <a href="./homepage.jsp" class="brand"><img src="public/mochimochi.png" style="height:80px; width:250px"></a>
       <div class="search">
          <form class="search-form">
             <input type="text" name="search" class="search-input" placeholder="Search for Books" >
