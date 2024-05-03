@@ -16,15 +16,15 @@
 	<div class="container">
 		<div class="forms-container">
 			<div class="signin-signup">
-				<form action="signup_process.jsp" class="sign-in-form" method="post">
+				<form action="./loginuser.jsp" class="sign-in-form" method="get">
 					<h2 class="title">Sign in</h2>
 					<div class="input-field">
 						<i class="fas fa-user"></i>
-						<input type="text" placeholder="Username" />
+						<input type="text" placeholder="Username" name="usernmae"/>
 					</div>
 					<div class="input-field">
 						<i class="fas fa-lock"></i>
-						<input type="password" placeholder="Password" />
+						<input type="password" placeholder="Password" name="password" />
 					</div>
 					<input type="submit" value="Login" class="btn solid" />
 					<p class="social-text">Or Sign in with social platforms</p>
@@ -43,13 +43,19 @@
 						</a>
 					</div>
 				</form>
-				<form action="#" class="sign-up-form">
+				<form action="signup_process.jsp" method="get" class="sign-up-form">
 					<h2 class="title">Sign up</h2>
 					<div class="input-field">
 						<i class="fas fa-user"></i>
-						<input type="text" placeholder="Username" id="name" name="name"/>
-						
-						
+						<input type="text" placeholder="Username" id="name" name="username"/>						
+					</div>
+					<div class="input-field">
+						<i class="fas fa-user"></i>
+						<input type="text" placeholder="First Name" id="firstname" name="firstName"/>						
+					</div>
+					<div class="input-field">
+						<i class="fas fa-user"></i>
+						<input type="text" placeholder="Last Name" id="lastname" name="lastName"/>						
 					</div>
 					<div class="input-field">
 						<i class="fas fa-envelope"></i>

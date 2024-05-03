@@ -7,26 +7,15 @@
 
 <%
     String username = request.getParameter("username");
-    String email = request.getParameter("email");
  /*    String phone = request.getParameter("phone"); */
     String password = request.getParameter("password");
-    String firstName = request.getParameter("firstName");
-    String lastName = request.getParameter("lastName");
     String type = request.getParameter("type");
 /*     String confirm_password = request.getParameter("confirm_password"); */
 
-    
-    /* String heroBook = ApiFetch.fetchDataFromAPI("http://localhost:8082/books/category?id="); */
-    Map<String, String> body = new HashMap<String, String>();
-    body.put("username", username);
-    body.put("email", email);
-    body.put("password", password);
-    body.put("firstName", firstName);
-    body.put("lastName", lastName);
-    	
-    	String data = ApiFetch.fetchDataFromAPI("http://localhost:8082/users/signup?username="+username+"&email="+email+"&password="+password+"&firstName="+firstName+"&lastName="+lastName);
+   
+    	String data = ApiFetch.fetchDataFromAPI("http://localhost:8082/users/login?username="+username+"&password="+password);
        	if(data != null){
-       		if(data.equals("signupSuccess")){
+       		if(data.equals("success")){
        	   		session.setAttribute("login", "successful");
        	   		pageContext.forward("./homepage.jsp");
        	   	}else{
@@ -34,7 +23,8 @@
        	   		response.sendRedirect("./signup.jsp");
        	   	}
        	}
-    
+   
+
    	
 /*     out.println("Confirm Password: " + confirm_password + "<br>"); */
 %>

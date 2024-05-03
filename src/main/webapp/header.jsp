@@ -21,7 +21,14 @@
       <div class="menu" id="menu">
          <ul class="menu-inner">
             <li class="menu-item"><a href="#" class="menu-link"><i class="fa-solid fa-caret-down"></i> &nbsp;Category</a></li>
+            <% if(session.getAttribute("login") != null){
+            if(!session.getAttribute("login").equals("successful")){ %>
             <li class="menu-item"><a href="#" class="menu-link"><i class="fa-solid fa-user"></i> &nbsp;Login/Signup</a></li>
+            <%}else{ %>
+            <li class="menu-item"><a href="./logoutuser.jsp" class="menu-link"><i class="fa-solid fa-user"></i> &nbsp;Logout</a></li>
+            <%}}else{ %>
+            <li class="menu-item"><a href="#" class="menu-link"><i class="fa-solid fa-user"></i> &nbsp;Login/Signup</a></li>
+            <%} %>
             <li class="menu-item"><a href="#" class="menu-link"><i class="fa-solid fa-cart-shopping"></i> &nbsp;Cart</a></li>
          </ul>
       </div>

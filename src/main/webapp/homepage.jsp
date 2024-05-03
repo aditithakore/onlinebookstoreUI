@@ -97,7 +97,7 @@
     for (int i = 0; i < 4; i++) {
     %>
     <div class="category-item">
-        <div class="category-circle" style="background-image: url('<%=categoryImages[i]%>');">
+        <div class="category-circle" style="background-image: url('<%=categoryImages[0]%>');">
             <div class="category-overlay"><p><%=category.get(i).getName()%><p></div>
         </div>
     </div>
