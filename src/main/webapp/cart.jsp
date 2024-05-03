@@ -20,16 +20,14 @@
 </head>
 <body>
 <jsp:include page="header.jsp"></jsp:include>
-    <h1>Shopping Cart</h1>
+    <h1 >Shopping Cart</h1>
 
     <table>
         <thead>
             <tr>
                 <th>Product</th>
                 <th>Price</th>
-                <th>Quantity</th>
                 <th>Total</th>
-                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -38,7 +36,7 @@
         <tfoot>
             <tr>
                 <td colspan="3">Total:</td>
-                <td id="cartTotal">$0.00</td>
+                <td id="cartTotal">Rs.0.00</td>
                 <td></td>
             </tr>
         </tfoot>

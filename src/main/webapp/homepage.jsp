@@ -98,8 +98,9 @@
     %>
     <div class="category-item">
         <div class="category-circle" style="background-image: url('<%=categoryImages[i]%>');">
-            <div class="category-overlay"><p><%=category.get(i).getName()%><p></div>
+            <div class="category-overlay"></div>
         </div>
+            <p style="margin-left:-120px; margin-top:5px;"><%=category.get(i).getName()%><p>
     </div>
     <% } %>
 </div>
@@ -120,8 +121,9 @@
     %>
     <div class="category-item">
         <div class="category-rectangle" style="background-image: url('<%=booksImages[i]%>');">
-            <div class="category-overlay text"><p><%=booksTrending.get(i).getTitle()%></p></div>
+            <div class="category-overlay text"></div>
         </div>
+        <p style="margin-left:-100px; margin-top:5px;"><%=booksTrending.get(i).getTitle()%></p>
     </div>
     <% } %>
 </div>
