@@ -16,26 +16,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Shopping Cart</title>
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th, td {
-            padding: 8px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-        tfoot td {
-            text-align: right;
-            font-weight: bold;
-        }
-    </style>
+    <link rel="stylesheet" href="public/cart.css">
 </head>
 <body>
+<jsp:include page="header.jsp"></jsp:include>
     <h1>Shopping Cart</h1>
 
     <table>
