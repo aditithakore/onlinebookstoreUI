@@ -11,7 +11,7 @@
 <body>
 <header class="header" id="header">
    <nav class="navbar container">
-      <a href="#" class="brand">Brand</a>
+      <a href="./homepage.jsp" class="brand"><img src="public/mochimochi.png" style="height:80px; width:250px"></a>
       <div class="search">
          <form class="search-form">
             <input type="text" name="search" class="search-input" placeholder="Search for Books" >
@@ -23,11 +23,11 @@
             <li class="menu-item"><a href="#" class="menu-link"><i class="fa-solid fa-caret-down"></i> &nbsp;Category</a></li>
             <% if(session.getAttribute("login") != null){
             if(!session.getAttribute("login").equals("successful")){ %>
-            <li class="menu-item"><a href="#" class="menu-link"><i class="fa-solid fa-user"></i> &nbsp;Login/Signup</a></li>
+            <li class="menu-item"><a href="./signup.jsp" class="menu-link"><i class="fa-solid fa-user"></i> &nbsp;Login/Signup</a></li>
             <%}else{ %>
             <li class="menu-item"><a href="./logoutuser.jsp" class="menu-link"><i class="fa-solid fa-user"></i> &nbsp;Logout</a></li>
             <%}}else{ %>
-            <li class="menu-item"><a href="#" class="menu-link"><i class="fa-solid fa-user"></i> &nbsp;Login/Signup</a></li>
+            <li class="menu-item"><a href="./signup.jsp" class="menu-link"><i class="fa-solid fa-user"></i> &nbsp;Login/Signup</a></li>
             <%} %>
             <li class="menu-item"><a href="#" class="menu-link"><i class="fa-solid fa-cart-shopping"></i> &nbsp;Cart</a></li>
          </ul>

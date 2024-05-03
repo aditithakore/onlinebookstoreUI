@@ -19,9 +19,8 @@
         <div class="row">
           <div class="col-md-12">
             <div class="copyright-text">
-              <p>© 2024
-                <a href="#">Shift Code Design</a>. All rights reserved. Created by
-                <a href="#">SCD</a>
+              <p>© 2024 All rights reserved. Created by
+                <a href="#">Aditi & Shoyab</a>
               </p>
             </div>
           </div>

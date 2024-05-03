@@ -1,4 +1,5 @@
 @charset "ISO-8859-1";
+
 :root {
   --primary-color: #595959;
   --secondary-color: #808F85;
@@ -7,9 +8,6 @@
   --text-color: #CFD11A;
 }
 
-body{
-	background-color: var(--background-color);
-}
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -26,52 +24,25 @@ time, mark, audio, video {
 	margin: 0;
 	padding: 0;
 	border: 0;
-	font-size: 100%;
-	font: inherit;
 	vertical-align: baseline;
+} 
+body{
+	background-color: var(--background-color);
 }
 
-.maindiv {
-  display: flex;
-}
-
-.image {
-  flex: 0 0 auto;
-}
-
-.image img {
-  width: 300px;
-  height: 400px;
-  margin-left:20px;
-  padding:20px;
-}
-
-.details {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding-left: 20px; /* Add padding for spacing between image and details */
-}
-
-.title {
-  font-size: 1.2em; /* Larger font size for the title */
-  
-}
-
-
-.conatinerBook{
-	padding:10px;
-	margin:40px;
-}
-
-.buttons {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 10px; /* Add some space between description and buttons */
-}
-
-.buttons button {
-  padding: 10px 20px;
-}
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tfoot td {
+            text-align: right;
+            font-weight: bold;
+        }

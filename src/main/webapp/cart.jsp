@@ -16,36 +16,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Shopping Cart</title>
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th, td {
-            padding: 8px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-        tfoot td {
-            text-align: right;
-            font-weight: bold;
-        }
-    </style>
+    <link rel="stylesheet" href="public/cart.css">
 </head>
 <body>
-    <h1>Shopping Cart</h1>
+<jsp:include page="header.jsp"></jsp:include>
+    <h1 >Shopping Cart</h1>
 
     <table>
         <thead>
             <tr>
                 <th>Product</th>
                 <th>Price</th>
-                <th>Quantity</th>
                 <th>Total</th>
-                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -54,7 +36,7 @@
         <tfoot>
             <tr>
                 <td colspan="3">Total:</td>
-                <td id="cartTotal">$0.00</td>
+                <td id="cartTotal">Rs.0.00</td>
                 <td></td>
             </tr>
         </tfoot>
